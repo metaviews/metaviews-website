@@ -1,0 +1,5 @@
+body { max-width: 900px; margin: 40px auto; padding: 0 16px; font-family: system-ui, sans-serif; line-height: 1.5; }
+nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+main img { max-width: 100%; height: auto; }

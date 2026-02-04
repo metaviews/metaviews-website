@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+title: Metaviews Podcast
+---
+
+<h1>Metaviews Podcast</h1>
+<p>Published when it’s ready.</p>
+
+<ul>
+  {% for ep in collections.metaviewsEpisodes %}
+    <li><a href="{{ ep.url }}">{{ ep.data.title }}</a> <small>({{ ep.date | date }})</small></li>
+  {% endfor %}
+</ul>

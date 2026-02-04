@@ -1,0 +1,23 @@
+---
+title: 2012 Keith Davey Forum on Public Affairs
+date: 2013-01-18
+tags:
+  - "Democracy"
+  - "Jesse Hirsh"
+  - "keith davey"
+  - "lee rainie"
+  - "pew"
+  - "social media"
+  - "steve paikin"
+  - "tvo"
+  - "Analysis"
+  - "Event"
+source: "https://news.metaviews.ca/2013/01/18/the-2012-keith-davey-forum-on-public-affairs/"
+---
+The 2012 Keith Davey Forum on Public Affairs, moderated by Steve Paikin and featuring Lee Rainie and myself, was held on October 17th 2012 at the Isabel Bader Theatre at Victory University at the University of Toronto.
+
+We addressed the question, Is Social Media Good for Democracy? Neither of us answered a complete yes or no, but instead offered nuanced answers that encourage both cautious optimism and chilling alarm.
+
+The discussion overall was far reaching, and fascinating. In particular it was a treat to spend time with Lee Rainie who is the Director of the Pew Research Center’s Internet & American Life Project, a non-profit, non–partisan “fact tank” that studies the social impact of the internet. Lee is also a co-author – with a close friend of mine and University of Toronto sociologist Barry Wellman – of Networked: The new social operating system, which was released in 2012.
+
+The event was recorded by [TVO’s Big Ideas](http://bigideas.tvo.org/jesse-hirsh-lee-rainie-social-media-good-democracy), and [the audio is now available](http://podcasts.tvo.org/bi/audio/2088577_48k.mp3). I’ll update this page if and when the video surfaces.

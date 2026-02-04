@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - post
+permalink: "/intelligence/tags/{{ tag | slug }}/"
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+---
+
+<h1>Tag: {{ tag }}</h1>
+
+<ul>
+  {% for item in collections[tag] | reverse %}
+    <li><a href="{{ item.url }}">{{ item.data.title }}</a> <small>({{ item.date | date }})</small></li>
+  {% endfor %}
+</ul>

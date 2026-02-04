@@ -1,0 +1,28 @@
+---
+title: Trust in the age of transparency
+date: 2013-03-01
+tags:
+  - "AOTI"
+  - "impossible"
+  - "Sherida Ryan"
+  - "transparecy"
+  - "trust"
+  - "Analysis"
+  - "Event"
+source: "https://news.metaviews.ca/2013/03/01/trust-is-the-chicken-soup-of-social-life-it/"
+---
+> Trust is the chicken soup of social life. It brings us all sorts of good things—from a willingness to get involved in our communities to higher rates of economic growth ( …), to making daily life more pleasant. Yet, like chicken soup, it appears to work somewhat mysteriously. (Uslaner)
+
+I asked Sherida Ryan to host a discussion at the Academy of the Impossible about trust in the age of transparency. Here’s the description and video:
+
+> Normally, we are unaware of the trust process. We often take trust for granted and treat it like the air we breathe, noticing it “only when it becomes scarce or polluted” (Baier). Trust requires two conditions: risk and dependence. Risk occurs when a person encounters a situation where perfect information is not available, where the future is unpredictable, and where there is a possibility of loss or harm. Risk creates the opportunity for trust development. Dependence is the second feature. Trust grows out of the interdependent nature of tasks, where one party relies on another, or perhaps many others, to achieve some desired result.
+> 
+> Research about trust has increased over the past 20 years, some say because of the advent of computer-mediated environment. The affordances of computer-mediated interaction can pose a challenge for the development of trust. Trust comes into question as situations become complex and uncertain. How can you trust people you have never met, whose identity is difficult to verify, in an environment where there are few mechanisms to control or sanction anti-social behaviour?
+> 
+> Similar to discussions of trust in face-to-face environments, the issue of trust in computer-mediated contexts has been approached from several perspectives. The most popular being what is known as trust through security. According to this perspective, online trust is best established through the development of strong security mechanisms (for example, access control and surveillance). This argument is predicated on the perspective that a perfectly secure system will ensure trustworthy online behavior.
+> 
+> However equating trust with security indicates a fundamental misunderstanding of the concept of trust. Eliminating risk reduces opportunities for trust formation, removing situations where a successful experience in negotiating dependence and vulnerability facilitates the development of trust. Paradoxically, attempts to assure trust through ever-increasing levels of security or surveillance lead to a climate of mistrust. An emphasis on security issues constrain the scope and quality of peoples’ lives, resulting in gated communities, characterized by suspicion and hording of public goods.
+> 
+> So what becomes of trust in an age of transparency.
+
+(Source: <https://www.youtube.com/>)
