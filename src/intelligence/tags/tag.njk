@@ -17,6 +17,9 @@ eleventyComputed:
 
 <ul>
   {% for item in collections[tag] | reverse %}
-    <li><a href="{{ item.url }}">{{ item.data.title }}</a> <small>({{ item.date | date }})</small></li>
+  <li>
+    <a href="{{ item.url }}">{{ item.data.title }}</a>
+    <small>({{ item.date | postDate }})</small>
+  </li>
   {% endfor %}
 </ul>

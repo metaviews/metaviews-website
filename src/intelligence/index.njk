@@ -1,13 +1,30 @@
 ---
 layout: layouts/base.njk
 title: Intelligence
+description: Durable analysis and an archive of Metaviews work (2008–present).
 ---
 
 <h1>Intelligence</h1>
-<p>Writing and analysis, including the archive.</p>
+
+<p>
+  Durable analysis and archival material. This is not a blog feed; it’s a
+  referenceable body of work.
+</p>
+
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 18px 0">
+  <a href="/intelligence/archive/">Browse by year</a>
+  <a href="/intelligence/tags/">Browse by tag</a>
+</div>
+
+<hr />
+
+<h2>Latest</h2>
 
 <ul>
-  {% for post in collections.intelligence %}
-    <li><a href="{{ post.url }}">{{ post.data.title }}</a> <small>({{ post.date | date }})</small></li>
-  {% endfor %}
+  {% for post in collections.intelligence %} {% if loop.index0 < 10 %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title or post.fileSlug }}</a>
+    {% if post.date %}<small> — {{ post.date | date }}</small>{% endif %}
+  </li>
+  {% endif %} {% endfor %}
 </ul>

@@ -7,58 +7,55 @@ description: An open-source intelligence agency, grounded in operations and agro
 <h1>Metaviews</h1>
 
 <p>
-  Metaviews is an open-source intelligence agency: research, analysis, and public programming
-  grounded in real operations—especially agroecology.
+  Metaviews is an open-source intelligence agency: research, analysis, and
+  public programming grounded in real operations—especially agroecology.
 </p>
 
 <p>
-  If you’re new: browse the intelligence archive, listen to the Metaviews podcast, or explore operations.
+  If you’re new: browse the intelligence archive, listen to the Metaviews
+  podcast, or explore operations.
 </p>
 
-<div style="display:flex; gap:12px; flex-wrap:wrap; margin: 18px 0 26px 0;">
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 26px 0">
   <a href="/intelligence/">Intelligence</a>
   <a href="/programming/">Programming</a>
   <a href="/operations/">Operations</a>
   <a href="/about/">About</a>
 </div>
 
-<hr>
+<hr />
 
 <h2>Latest intelligence</h2>
 
-{% if collections.intelligence and collections.intelligence.length %}
-  <ul>
-    {% for post in collections.intelligence | slice(0, 12) %}
-      <li>
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-        {% if post.date %}<small> — {{ post.date | date }}</small>{% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for post in collections.intelligence %} {% if loop.index0 < 10 %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title or post.fileSlug }}</a>
+    {% if post.date %}<small> — {{ post.date | date }}</small>{% endif %}
+  </li>
+  {% endif %} {% endfor %}
+</ul>
 
-  <p><a href="/intelligence/">Browse the archive</a></p>
-{% else %}
-  <p>No intelligence items found yet.</p>
-{% endif %}
+<p><a href="/intelligence/">Browse the archive</a></p>
 
-<hr>
+<hr />
 
 <h2>Latest Metaviews podcast episodes</h2>
 
 {% if collections.metaviewsEpisodes and collections.metaviewsEpisodes.length %}
-  <ul>
-    {% for ep in collections.metaviewsEpisodes | slice(0, 10) %}
-      <li>
-        <a href="{{ ep.url }}">{{ ep.data.title }}</a>
-        {% if ep.date %}<small> — {{ ep.date | date }}</small>{% endif %}
-        {% if ep.data.audio %}
-          <small> — <a href="{{ ep.data.audio }}">Audio</a></small>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for ep in collections.metaviewsEpisodes %} {% if loop.index0 < 10 %}
+  <li>
+    <a href="{{ ep.url }}">{{ ep.data.title or ep.fileSlug }}</a>
+    {% if ep.date %}<small> — {{ ep.date | date }}</small>{% endif %} {% if
+    ep.data.audio %}
+    <small> — <a href="{{ ep.data.audio }}">Audio</a></small>
+    {% endif %}
+  </li>
+  {% endif %} {% endfor %}
+</ul>
 
-  <p><a href="/programming/podcasts/metaviews/">All Metaviews episodes</a></p>
+<p><a href="/programming/podcasts/metaviews/">All Metaviews episodes</a></p>
 {% else %}
-  <p>No podcast episodes found yet.</p>
+<p>No podcast episodes found yet.</p>
 {% endif %}

@@ -1,65 +1,53 @@
 module.exports = function (eleventyConfig) {
-  // Date formatting filter (no dependencies)
-  eleventyConfig.addFilter("date", (value) => {
-    if (!value) return "";
-    const d = value instanceof Date ? value : new Date(value);
-    if (Number.isNaN(d.getTime())) return "";
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
-  });
-
-  // passthrough assets if you add them later
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  // Collections: intelligence posts + podcast episodes
-  eleventyConfig.addCollection("intelligence", function (collectionApi) {
-    return collectionApi
-      .getFilteredByGlob("src/intelligence/**/*.md")
-      .filter((item) => !item.data.draft)
-      .sort((a, b) => (b.date || 0) - (a.date || 0));
+  eleventyConfig.addGlobalData("build", {
+    year: new Date().getFullYear(),
   });
 
-  eleventyConfig.addCollection("metaviewsEpisodes", function (collectionApi) {
+  const formatDate = (dateObj) => {
+    if (!dateObj) return "";
+    return new Intl.DateTimeFormat("en-CA", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(dateObj);
+  };
+
+  eleventyConfig.addFilter("postDate", formatDate);
+  eleventyConfig.addFilter("date", formatDate);
+
+  // Intelligence (newest-first, supports filename dates)
+  eleventyConfig.addCollection("intelligence", (collectionApi) => {
+    const items = collectionApi.getFilteredByGlob(
+      "src/intelligence/archive/**/*.{md,njk,html,liquid,11ty.js}"
+    );
+
+    const effectiveDate = (item) => {
+      if (item.data && item.data.date) return new Date(item.data.date);
+      if (item.date) return new Date(item.date);
+
+      const slug = item.fileSlug || "";
+      const m = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (m) return new Date(`${m[1]}T00:00:00Z`);
+
+      return new Date(0);
+    };
+
+    return items.sort((a, b) => effectiveDate(b) - effectiveDate(a));
+  });
+
+  // Metaviews episodes (newest-first)
+  eleventyConfig.addCollection("metaviewsEpisodes", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/programming/podcasts/metaviews/episodes/**/*.md")
-      .filter((item) => !item.data.draft)
-      .sort((a, b) => (b.date || 0) - (a.date || 0));
+      .sort((a, b) => b.date - a.date);
   });
 
   return {
     dir: {
       input: "src",
       output: "_site",
-      includes: "_includes",
     },
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    templateFormats: ["md", "njk", "html"],
   };
 };
-
-eleventyConfig.addCollection("tagList", function (collectionApi) {
-  const tagSet = new Set();
-
-  collectionApi.getAll().forEach((item) => {
-    const tags = item.data.tags;
-    if (!tags) return;
-    (Array.isArray(tags) ? tags : [tags]).forEach((t) => {
-      if (!t) return;
-      if (["all", "nav", "post"].includes(t)) return;
-      tagSet.add(String(t).toLowerCase());
-    });
-  });
-
-  return Array.from(tagSet).sort();
-});
-eleventyConfig.addFilter("slug", (value) => {
-  return String(value || "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-});

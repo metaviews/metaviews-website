@@ -1,11 +1,22 @@
 ---
 layout: layouts/base.njk
-title: Tags
+title: Intelligence Tags
+description: "Browse intelligence by tag."
 ---
 
 <h1>Tags</h1>
+<p><a href="/intelligence/">Back to Intelligence</a></p>
+<hr />
+
+{% if tagList and tagList.length %}
 <ul>
-  {% for t in collections.tagList %}
-    <li><a href="/intelligence/tags/{{ t | slug }}/">{{ t }}</a></li>
+  {% for tag in tagList %}
+  <li>
+    <a href="/intelligence/tags/{{ tag | slug }}/">{{ tag }}</a>
+    <small> ({{ collections[tag].length }})</small>
+  </li>
   {% endfor %}
 </ul>
+{% else %}
+<p>No tags generated yet.</p>
+{% endif %}

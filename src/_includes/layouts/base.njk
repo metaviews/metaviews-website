@@ -1,11 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ title or "Metaviews" }}</title>
-    {% if description %}<meta name="description" content="{{ description }}">{% endif %}
-    <link rel="stylesheet" href="/assets/site.css">
+    {% if description %}
+    <meta name="description" content="{{ description }}" />
+    {% endif %}
+    <link rel="stylesheet" href="/assets/site.css" />
   </head>
   <body>
     <header>
@@ -18,12 +20,10 @@
       </nav>
     </header>
 
-    <main>
-      {{ content | safe }}
-    </main>
+    <main>{{ content | safe }}</main>
 
     <footer>
-      <p>Metaviews.</p>
+      <p></p>
     </footer>
   </body>
 </html>

@@ -1,13 +1,29 @@
 ---
 layout: layouts/base.njk
 title: Metaviews Podcast
+description: Episodes from the Metaviews podcast.
 ---
 
 <h1>Metaviews Podcast</h1>
-<p>Published when it’s ready.</p>
 
+<p>Episodes from the Metaviews podcast.</p>
+
+<p><a href="/programming/">Back to Programming</a></p>
+
+<hr />
+
+{% if collections.metaviewsEpisodes and collections.metaviewsEpisodes.length %}
 <ul>
   {% for ep in collections.metaviewsEpisodes %}
-    <li><a href="{{ ep.url }}">{{ ep.data.title }}</a> <small>({{ ep.date | date }})</small></li>
+  <li>
+    <a href="{{ ep.url }}">{{ ep.data.title }}</a>
+    {% if ep.date %}<small> — {{ ep.date | date }}</small>{% endif %} {% if
+    ep.data.audio %}
+    <small> — <a href="{{ ep.data.audio }}">Audio</a></small>
+    {% endif %}
+  </li>
   {% endfor %}
 </ul>
+{% else %}
+<p>No podcast episodes found yet.</p>
+{% endif %}
