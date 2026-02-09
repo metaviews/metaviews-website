@@ -12,30 +12,21 @@ description: Episodes pulled live from the Captivate RSS feed.
   </p>
 
   <div class="actions">
-    <a class="btn" href="{{ metaviewsFeed.url }}">RSS feed</a>
-    {% if metaviewsFeed.home %}
-    <a
-      class="btn btn-secondary"
-      href="{{ metaviewsFeed.home }}"
-      target="_blank"
-      rel="noopener"
-      >Captivate</a
-    >
-    {% endif %}
+    <a class="btn" href="{{ captivate.feedUrl }}">RSS feed</a>
   </div>
 </section>
 
-{% if metaviewsFeed and metaviewsFeed.items and metaviewsFeed.items.length %}
+{% if captivate and captivate.items and captivate.items.length %}
 <section class="episode-grid">
-  {% for ep in metaviewsFeed.items %} {% set thumb = ep.image or
-  (metaviewsFeed.itunesImage or "") %}
+  {% for ep in captivate.items %} {% set thumb = ep.image or
+  (captivate.itunesImage or "") %}
   <article class="episode-card">
     <a
       class="episode-thumb"
       href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
     >
-      {% if ep.image %}
-      <img src="{{ ep.image }}" alt="{{ ep.title }}" loading="lazy" />
+      {% if thumb %}
+      <img src="{{ thumb }}" alt="{{ ep.title }}" loading="lazy" />
       {% else %}
       <div class="thumb-fallback" aria-hidden="true"></div>
       {% endif %}
@@ -49,7 +40,7 @@ description: Episodes pulled live from the Captivate RSS feed.
       </h2>
 
       <div class="episode-meta">
-        {% if ep.date %}<span>{{ ep.date | postDate }}</span>{% endif %} {% if
+        {% if ep.pubDate %}<span>{{ ep.pubDate | postDate }}</span>{% endif %} {% if
         ep.duration %}<span>• {{ ep.duration }}</span>{% endif %} {% if
         ep.episodeNumber %}<span>• Ep {{ ep.episodeNumber }}</span>{% endif %}
       </div>
@@ -64,11 +55,6 @@ description: Episodes pulled live from the Captivate RSS feed.
           href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
           >Episode page</a
         >
-        {% if ep.link %}
-        <a class="link" href="{{ ep.link }}" target="_blank" rel="noopener"
-          >Captivate</a
-        >
-        {% endif %}
       </div>
     </div>
   </article>

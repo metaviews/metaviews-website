@@ -1,14 +1,15 @@
 ---
+layout: layouts/base.njk
 title: Metaviews Media Social Contract
 date: 2025-05-15
 type: page
-source: "https://news.metaviews.ca/metaviews-media-social-contract/"
 ---
+
 # Reflecting on the relationship between creator and constituency
 
- A set of expectations or responsibilities that govern the relationship between a creator and their constituency. Originally published on May 18 2021.
+A set of expectations or responsibilities that govern the relationship between a creator and their constituency. Originally published on May 18 2021.
 
-### Audience as Constituency
+## Audience as Constituency
 
 Constituency as media creation is itself a political act that if successful can result in political power. But also constituency as the goal or focus of any media outlet in the digital ecosystem has to be action, mobilization, and loot, whether attention or money.
 
@@ -22,7 +23,7 @@ These algorithms require bribes, or kick backs, that give them the grease to do 
 
 While I could include an image spelling out to you exactly what to do, I’m also willing to give you one on one tech support to help figure out how you can perform your duty as a reader, which is to train the evil algorithm to promote our content.
 
-### Algorithms Matter
+## Algorithms Matter
 
 I often forget this, as I’m a recovering broadcaster. I was raised to produce quality content, and respect our audience, which tragically is no longer relevant or important at all. What matters now is how the algorithm perceives our content, which means hate clicks can sometimes be more valuable than other kinds of clicks.
 
@@ -40,10 +41,8 @@ And it’s not just about newsletters, but any content you might pay for.
 
 And **all media is paid for, because your attention is valuable**!! There’s no free media, just media that costs your attention, which suggests you may not be getting the best value out of that relationship.
 
-### The Ask:
+## The Ask
 
-**Like what you consume**. 
-
-**Post a comment in response**. Any comment. However suggestions, brain storms, or idle thoughts regarding potential algorithmic exercises that we can do together are appreciated.
+**Like what you consume**. **Post a comment in response**. Any comment. However suggestions, brain storms, or idle thoughts regarding potential algorithmic exercises that we can do together are appreciated.
 
 **Share with friends!** Spread the love.

@@ -38,6 +38,11 @@ function getLastPathSegment(url) {
   return parts[parts.length - 1] || "";
 }
 
+function slugifyTitle(str) {
+  const norm = normalizeTitle(str);
+  return norm.replace(/\s+/g, "-");
+}
+
 function buildSlugSuffixes(slug, minWords = 4) {
   // slug like: "26-cory-doctorow-on-the-sucks-to-be-you-society"
   // We want suffixes like: "the-sucks-to-be-you-society"
@@ -84,6 +89,18 @@ module.exports = async function () {
 
   const normalizeArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
+  const stripHtml = (html) =>
+    String(html || "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const summaryFrom = (html, maxLen = 220) => {
+    const t = stripHtml(html);
+    if (t.length <= maxLen) return t;
+    return t.slice(0, maxLen).trim() + "...";
+  };
+
   const episodes = items.map((it) => {
     const enclosureUrl = it?.enclosure?.["@_url"] || "";
 
@@ -108,6 +125,8 @@ module.exports = async function () {
 
     const link =
       typeof it?.link === "string" ? it.link : it?.link?.["#text"] || "";
+    const linkSlug = getLastPathSegment(link);
+    const slug = linkSlug || slugifyTitle(title);
 
     return {
       title,
@@ -116,16 +135,20 @@ module.exports = async function () {
       pubDate,
       pubDateRaw,
       description,
+      contentHtml: description,
+      summary: summaryFrom(description, 240),
+      excerpt: summaryFrom(description, 220),
       enclosureUrl,
       episodeNumber: episodeNumber !== null ? String(episodeNumber) : null,
       image,
+      slug,
       categories: normalizeArray(it?.category).map((c) =>
         typeof c === "string" ? c : c?.["#text"] || ""
       ),
       _normTitle: normalizeTitle(title),
       _normLink: normalizeUrl(link),
       _normLinkNoScheme: normalizeUrlNoScheme(link),
-      _linkSlug: getLastPathSegment(link), // e.g. "26-cory-doctorow-on-the-sucks-to-be-you-society"
+      _linkSlug: linkSlug, // e.g. "26-cory-doctorow-on-the-sucks-to-be-you-society"
     };
   });
 
@@ -154,7 +177,14 @@ module.exports = async function () {
 
   return {
     feedUrl,
+    feed: feedUrl,
+    home: typeof channel?.link === "string" ? channel.link : channel?.link?.["#text"] || "",
+    itunesImage:
+      channel?.["itunes:image"]?.["@_href"] ||
+      channel?.image?.url ||
+      "",
     items: episodes,
+    itemsCount: episodes.length,
     byEpisodeNumber,
     byGuid,
     byTitle,

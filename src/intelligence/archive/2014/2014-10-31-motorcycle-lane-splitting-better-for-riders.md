@@ -2,11 +2,7 @@
 title: "Motorcycle lane splitting: Better for riders, better for drivers, and safer than sitting in traffic"
 date: 2014-10-31
 tags:
-  - "Analysis"
-source: "https://news.metaviews.ca/2014/10/31/motorcycle-lane-splitting-better-for-riders/"
+- "Analysis"
 ---
-[Motorcycle lane splitting: Better for riders, better for drivers, and safer than sitting in traffic](http://www.gizmag.com/motorcycle-lane-splitting-filtering-safety-research/34425/)
 
-> Recent research has confirmed what many motorcycle riders have known for years. “Lane splitting” – or riding in between lanes of traffic – obviously saves riders a lot of time, but it’s also considerably safer than sitting in traffic and acting like a car, as long as it’s done within certain guidelines, and contrary to what many drivers think, it actually speeds up traffic for everyone else on the road. Riders, please pass this information on to the drivers in your lives.
-
-PDF of “[Safety implications of lane-splitting among California motorcyclists involved in collisions](http://www.sacbee.com/news/local/transportation/article3210060.ece/binary/California%20Lane%20Splitting%20Crash%20Analysis.pdf)”
+[Motorcycle lane splitting: Better for riders, better for drivers, and safer than sitting in traffic](http://www.gizmag.com/motorcycle-lane-splitting-filtering-safety-research/34425/)> Recent research has confirmed what many motorcycle riders have known for years. “Lane splitting” – or riding in between lanes of traffic – obviously saves riders a lot of time, but it’s also considerably safer than sitting in traffic and acting like a car, as long as it’s done within certain guidelines, and contrary to what many drivers think, it actually speeds up traffic for everyone else on the road. Riders, please pass this information on to the drivers in your lives.PDF of “[Safety implications of lane-splitting among California motorcyclists involved in collisions](http://www.sacbee.com/news/local/transportation/article3210060.ece/binary/California%20Lane%20Splitting%20Crash%20Analysis.pdf)”

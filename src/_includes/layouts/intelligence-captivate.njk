@@ -19,11 +19,7 @@ captivate.bySlug %} {% endif %} {% set itemsCount = 0 %} {% if captivate and
 captivate.itemsCount %} {% set itemsCount = captivate.itemsCount %} {% endif %}
 {% set ep = bySlug[srcSlug] %} {% if not ep and srcSlug %} {% set ep =
 bySlug[srcSlug + "/"] %} {% endif %} {% set bySlugMatch = "no" %} {% if ep %} {%
-set bySlugMatch = "yes" %} {% endif %} {# ---------- Optional debug (remove
-anytime) ---------- #}
-<pre class="debug">
-Debug: feed={{ feed }}, srcSlug={{ srcSlug }}, bySlugMatch={{ bySlugMatch }}, items={{ itemsCount }}
-</pre>
+set bySlugMatch = "yes" %} {% endif %}
 
 <article class="content">
   <header class="page-header">
@@ -44,17 +40,10 @@ Debug: feed={{ feed }}, srcSlug={{ srcSlug }}, bySlugMatch={{ bySlugMatch }}, it
     <p class="subtitle">{{ ep.subtitle }}</p>
     {% endif %} {% if ep.summary %}
     <p>{{ ep.summary }}</p>
-    {% endif %} {# Audio: support either audioUrl or enclosureUrl key #} {% if
-    ep.audioUrl %}
-    <audio controls preload="none" style="width: 100%">
-      <source src="{{ ep.audioUrl }}" type="audio/mpeg" />
-    </audio>
-    {% elseif ep.enclosureUrl %}
+    {% endif %} {% if ep.enclosureUrl %}
     <audio controls preload="none" style="width: 100%">
       <source src="{{ ep.enclosureUrl }}" type="audio/mpeg" />
     </audio>
-    {% endif %} {% if ep.link %}
-    <p><a href="{{ ep.link }}">View episode</a></p>
     {% endif %}
   </section>
   {% endif %}

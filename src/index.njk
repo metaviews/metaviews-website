@@ -35,11 +35,13 @@ description: An open-source intelligence agency, grounded in operations and agro
 <h2>Latest intelligence</h2>
 
 <ul>
-  {% for post in collections.intelligence | slice(0, 10) %}
+  {% for post in collections.intelligence %}
+  {% if loop.index0 < 10 %}
   <li>
     <a href="{{ post.url }}">{{ post.data.title or post.fileSlug }}</a>
     {% if post.date %}<small> — {{ post.date | date }}</small>{% endif %}
   </li>
+  {% endif %}
   {% endfor %}
 </ul>
 
@@ -47,20 +49,14 @@ description: An open-source intelligence agency, grounded in operations and agro
 
 <h2>Latest Metaviews podcast episodes</h2>
 
-{# Normalize feed items, regardless of how the global data is shaped #} {% set
-feedItems = [] %} {% if metaviewsFeedItems %} {% set feedItems =
-metaviewsFeedItems %} {% elseif metaviewsFeed %} {% if metaviewsFeed.items %} {%
-set feedItems = metaviewsFeed.items %} {% else %} {# if metaviewsFeed is already
-an array #} {% set feedItems = metaviewsFeed %} {% endif %} {% endif %} {% set
-latestPods = feedItems | slice(0, 6) %} {% if (latestPods | length) %}
+{% if captivate and captivate.items and (captivate.items | length) %}
 <div class="podcast-grid">
-  {% for ep in latestPods %}
+  {% for ep in captivate.items %}
+  {% if loop.index0 < 6 %}
   <article class="podcast-card">
     <a
       class="podcast-thumb"
-      href="{{ ep.link }}"
-      target="_blank"
-      rel="noopener"
+      href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
     >
       {% if ep.image %}
       <img src="{{ ep.image }}" alt="{{ ep.title }}" loading="lazy" />
@@ -72,13 +68,13 @@ latestPods = feedItems | slice(0, 6) %} {% if (latestPods | length) %}
     <div class="podcast-body">
       <div class="podcast-meta">
         <span class="podcast-show">Metaviews</span>
-        {% if ep.date %}
-        <span class="podcast-date">• {{ ep.date | postDate }}</span>
+        {% if ep.pubDate %}
+        <span class="podcast-date">• {{ ep.pubDate | postDate }}</span>
         {% endif %}
       </div>
 
       <h3 class="podcast-title">
-        <a href="{{ ep.link }}" target="_blank" rel="noopener"
+        <a href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
           >{{ ep.title }}</a
         >
       </h3>
@@ -88,6 +84,7 @@ latestPods = feedItems | slice(0, 6) %} {% if (latestPods | length) %}
       {% endif %}
     </div>
   </article>
+  {% endif %}
   {% endfor %}
 </div>
 
@@ -97,12 +94,4 @@ latestPods = feedItems | slice(0, 6) %} {% if (latestPods | length) %}
 {% else %}
 <p><em>No podcast episodes available.</em></p>
 
-{# Temporary debug — remove once it works #}
-<p>
-  <small>
-    Debug: hasMetaviewsFeed={{ "yes" if metaviewsFeed else "no" }},
-    hasMetaviewsFeedItems={{ "yes" if metaviewsFeedItems else "no" }}, items={{
-    feedItems | length }}
-  </small>
-</p>
 {% endif %}
