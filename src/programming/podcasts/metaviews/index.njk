@@ -1,29 +1,79 @@
 ---
 layout: layouts/base.njk
 title: Metaviews Podcast
-description: Episodes from the Metaviews podcast.
+description: Episodes pulled live from the Captivate RSS feed.
 ---
 
-<h1>Metaviews Podcast</h1>
+<section class="page-head">
+  <h1>Metaviews Podcast</h1>
+  <p class="lede">
+    A living archive of conversations—pulled directly from Captivate, rendered
+    locally.
+  </p>
 
-<p>Episodes from the Metaviews podcast.</p>
-
-<p><a href="/programming/">Back to Programming</a></p>
-
-<hr />
-
-{% if collections.metaviewsEpisodes and collections.metaviewsEpisodes.length %}
-<ul>
-  {% for ep in collections.metaviewsEpisodes %}
-  <li>
-    <a href="{{ ep.url }}">{{ ep.data.title }}</a>
-    {% if ep.date %}<small> — {{ ep.date | date }}</small>{% endif %} {% if
-    ep.data.audio %}
-    <small> — <a href="{{ ep.data.audio }}">Audio</a></small>
+  <div class="actions">
+    <a class="btn" href="{{ metaviewsFeed.url }}">RSS feed</a>
+    {% if metaviewsFeed.home %}
+    <a
+      class="btn btn-secondary"
+      href="{{ metaviewsFeed.home }}"
+      target="_blank"
+      rel="noopener"
+      >Captivate</a
+    >
     {% endif %}
-  </li>
+  </div>
+</section>
+
+{% if metaviewsFeed and metaviewsFeed.items and metaviewsFeed.items.length %}
+<section class="episode-grid">
+  {% for ep in metaviewsFeed.items %} {% set thumb = ep.image or
+  (metaviewsFeed.itunesImage or "") %}
+  <article class="episode-card">
+    <a
+      class="episode-thumb"
+      href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
+    >
+      {% if ep.image %}
+      <img src="{{ ep.image }}" alt="{{ ep.title }}" loading="lazy" />
+      {% else %}
+      <div class="thumb-fallback" aria-hidden="true"></div>
+      {% endif %}
+    </a>
+
+    <div class="episode-body">
+      <h2 class="episode-title">
+        <a href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
+          >{{ ep.title }}</a
+        >
+      </h2>
+
+      <div class="episode-meta">
+        {% if ep.date %}<span>{{ ep.date | postDate }}</span>{% endif %} {% if
+        ep.duration %}<span>• {{ ep.duration }}</span>{% endif %} {% if
+        ep.episodeNumber %}<span>• Ep {{ ep.episodeNumber }}</span>{% endif %}
+      </div>
+
+      {% if ep.excerpt %}
+      <p class="episode-excerpt">{{ ep.excerpt }}</p>
+      {% endif %}
+
+      <div class="episode-links">
+        <a
+          class="link"
+          href="/programming/podcasts/metaviews/episodes/{{ ep.slug }}/"
+          >Episode page</a
+        >
+        {% if ep.link %}
+        <a class="link" href="{{ ep.link }}" target="_blank" rel="noopener"
+          >Captivate</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </article>
   {% endfor %}
-</ul>
+</section>
 {% else %}
-<p>No podcast episodes found yet.</p>
+<p><em>No episodes found in the feed.</em></p>
 {% endif %}

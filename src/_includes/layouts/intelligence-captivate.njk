@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+---
+
+{# Standalone Captivate-enhanced intelligence layout. - No partial includes (you
+said none exist) - Avoids ternaries and fragile `{% set %}` expressions - Uses
+`captivate.bySlug` map if present - Falls back gracefully to plain page content
+#} {# ---------- Establish a slug we can match against ---------- #} {% set
+srcSlug = "" %} {# If you supply srcSlug in front matter, it will be available
+as `srcSlug` already. Only set it from page.url if it wasn't provided. #} {% if
+not srcSlug and page and page.url %} {% set srcSlug = page.url %} {% endif %} {#
+Normalize trailing slash #} {% if srcSlug and srcSlug != "/" %} {% set lastChar
+= srcSlug | slice(-1) %} {% if lastChar == "/" %} {% set srcSlug = srcSlug |
+slice(0, -1) %} {% endif %} {% endif %} {# ---------- Captivate lookup
+---------- #} {% set feed = "https://feeds.captivate.fm/metaviews/" %} {% if
+captivate and captivate.feed %} {% set feed = captivate.feed %} {% endif %} {%
+set bySlug = {} %} {% if captivate and captivate.bySlug %} {% set bySlug =
+captivate.bySlug %} {% endif %} {% set itemsCount = 0 %} {% if captivate and
+captivate.itemsCount %} {% set itemsCount = captivate.itemsCount %} {% endif %}
+{% set ep = bySlug[srcSlug] %} {% if not ep and srcSlug %} {% set ep =
+bySlug[srcSlug + "/"] %} {% endif %} {% set bySlugMatch = "no" %} {% if ep %} {%
+set bySlugMatch = "yes" %} {% endif %} {# ---------- Optional debug (remove
+anytime) ---------- #}
+<pre class="debug">
+Debug: feed={{ feed }}, srcSlug={{ srcSlug }}, bySlugMatch={{ bySlugMatch }}, items={{ itemsCount }}
+</pre>
+
+<article class="content">
+  <header class="page-header">
+    <h1>{{ title or page.fileSlug }}</h1>
+
+    {% if date %}
+    <p class="meta">{{ date | postDate }}</p>
+    {% endif %} {% if description %}
+    <p class="lede">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  {% if ep %}
+  <section class="captivate-card">
+    {% if ep.title %}
+    <h2>{{ ep.title }}</h2>
+    {% endif %} {% if ep.subtitle %}
+    <p class="subtitle">{{ ep.subtitle }}</p>
+    {% endif %} {% if ep.summary %}
+    <p>{{ ep.summary }}</p>
+    {% endif %} {# Audio: support either audioUrl or enclosureUrl key #} {% if
+    ep.audioUrl %}
+    <audio controls preload="none" style="width: 100%">
+      <source src="{{ ep.audioUrl }}" type="audio/mpeg" />
+    </audio>
+    {% elseif ep.enclosureUrl %}
+    <audio controls preload="none" style="width: 100%">
+      <source src="{{ ep.enclosureUrl }}" type="audio/mpeg" />
+    </audio>
+    {% endif %} {% if ep.link %}
+    <p><a href="{{ ep.link }}">View episode</a></p>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <div class="prose">{{ content | safe }}</div>
+</article>

@@ -6,20 +6,28 @@ description: An open-source intelligence agency, grounded in operations and agro
 
 <h1>Welcome to Metaviews</h1>
 
-<p>We're in the process of updating our website for 2026. Testing out new technology for turbulent times.</p>
+<p>
+  We're in the process of updating our website for 2026. Testing out new
+  technology for turbulent times.
+</p>
 
 <h2>What's New:</h2>
 <h3><a href="https://thefutureherd.ca">The Future Herd</a></h3>
-<img src=https://thefutureherd.ca/assets/img/futureherdlogogoats.png width=250>
+<img
+  src="https://thefutureherd.ca/assets/img/futureherdlogogoats.png"
+  width="250"
+  alt="The Future Herd logo"
+/>
+
 <p>
   A new podcast from Metaviews focused on the future of our agri-food system.
-  <a href=https://thefutureherd.ca>The Future Herd</a> is built around conversations with leaders, practitioners, and
-  decision-makers working across agriculture, policy, research, and innovation.
-  The show treats the future not as a forecast, but as a shared coordination
-  problem—one that demands collaboration, experimentation, and collective
-  sense-making. Each episode explores how we adapt together,
-  revealing the real pressures, trade-offs, and opportunities shaping food
-  systems in real time.
+  <a href="https://thefutureherd.ca">The Future Herd</a> is built around
+  conversations with leaders, practitioners, and decision-makers working across
+  agriculture, policy, research, and innovation. The show treats the future not
+  as a forecast, but as a shared coordination problem—one that demands
+  collaboration, experimentation, and collective sense-making. Each episode
+  explores how we adapt together, revealing the real pressures, trade-offs, and
+  opportunities shaping food systems in real time.
 </p>
 
 <hr />
@@ -27,34 +35,74 @@ description: An open-source intelligence agency, grounded in operations and agro
 <h2>Latest intelligence</h2>
 
 <ul>
-  {% for post in collections.intelligence %} {% if loop.index0 < 10 %}
+  {% for post in collections.intelligence | slice(0, 10) %}
   <li>
     <a href="{{ post.url }}">{{ post.data.title or post.fileSlug }}</a>
     {% if post.date %}<small> — {{ post.date | date }}</small>{% endif %}
   </li>
-  {% endif %} {% endfor %}
+  {% endfor %}
 </ul>
 
 <p><a href="/intelligence/">Browse the archive</a></p>
 
-<hr />
-
 <h2>Latest Metaviews podcast episodes</h2>
 
-{% if collections.metaviewsEpisodes and collections.metaviewsEpisodes.length %}
-<ul>
-  {% for ep in collections.metaviewsEpisodes %} {% if loop.index0 < 10 %}
-  <li>
-    <a href="{{ ep.url }}">{{ ep.data.title or ep.fileSlug }}</a>
-    {% if ep.date %}<small> — {{ ep.date | date }}</small>{% endif %} {% if
-    ep.data.audio %}
-    <small> — <a href="{{ ep.data.audio }}">Audio</a></small>
-    {% endif %}
-  </li>
-  {% endif %} {% endfor %}
-</ul>
+{# Normalize feed items, regardless of how the global data is shaped #} {% set
+feedItems = [] %} {% if metaviewsFeedItems %} {% set feedItems =
+metaviewsFeedItems %} {% elseif metaviewsFeed %} {% if metaviewsFeed.items %} {%
+set feedItems = metaviewsFeed.items %} {% else %} {# if metaviewsFeed is already
+an array #} {% set feedItems = metaviewsFeed %} {% endif %} {% endif %} {% set
+latestPods = feedItems | slice(0, 6) %} {% if (latestPods | length) %}
+<div class="podcast-grid">
+  {% for ep in latestPods %}
+  <article class="podcast-card">
+    <a
+      class="podcast-thumb"
+      href="{{ ep.link }}"
+      target="_blank"
+      rel="noopener"
+    >
+      {% if ep.image %}
+      <img src="{{ ep.image }}" alt="{{ ep.title }}" loading="lazy" />
+      {% else %}
+      <div class="thumb-fallback" aria-hidden="true"></div>
+      {% endif %}
+    </a>
 
-<p><a href="/programming/podcasts/metaviews/">All Metaviews episodes</a></p>
+    <div class="podcast-body">
+      <div class="podcast-meta">
+        <span class="podcast-show">Metaviews</span>
+        {% if ep.date %}
+        <span class="podcast-date">• {{ ep.date | postDate }}</span>
+        {% endif %}
+      </div>
+
+      <h3 class="podcast-title">
+        <a href="{{ ep.link }}" target="_blank" rel="noopener"
+          >{{ ep.title }}</a
+        >
+      </h3>
+
+      {% if ep.summary %}
+      <p class="podcast-summary">{{ ep.summary }}</p>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+<p style="margin-top: 14px">
+  <a href="/programming/podcasts/metaviews/">Browse all Metaviews episodes →</a>
+</p>
 {% else %}
-<p>No podcast episodes found yet.</p>
+<p><em>No podcast episodes available.</em></p>
+
+{# Temporary debug — remove once it works #}
+<p>
+  <small>
+    Debug: hasMetaviewsFeed={{ "yes" if metaviewsFeed else "no" }},
+    hasMetaviewsFeedItems={{ "yes" if metaviewsFeedItems else "no" }}, items={{
+    feedItems | length }}
+  </small>
+</p>
 {% endif %}

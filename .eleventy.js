@@ -17,6 +17,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("postDate", formatDate);
   eleventyConfig.addFilter("date", formatDate);
 
+  // Add missing Nunjucks split filter (used by intelligence-captivate.njk)
+  eleventyConfig.addFilter("split", (value, delimiter = "/") => {
+    return String(value || "").split(delimiter);
+  });
+
   // Intelligence (newest-first, supports filename dates)
   eleventyConfig.addCollection("intelligence", (collectionApi) => {
     const items = collectionApi.getFilteredByGlob(

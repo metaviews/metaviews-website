@@ -8,6 +8,7 @@
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-fetch": "^5.1.1",
-    "fast-xml-parser": "^5.3.4"
+    "fast-xml-parser": "^5.3.5",
+    "rss-parser": "^3.13.0"
   }
 }
