@@ -38,13 +38,17 @@ module.exports = function (eleventyConfig) {
 
   // Intelligence (newest-first, supports filename dates)
   eleventyConfig.addCollection("intelligence", (collectionApi) => {
-    const items = collectionApi.getFilteredByGlob(intelligenceGlob);
+    const items = collectionApi
+      .getFilteredByGlob(intelligenceGlob)
+      .filter((item) => item.data && item.data.layout === "layouts/intelligence-post.njk");
     return items.sort((a, b) => effectiveDate(b) - effectiveDate(a));
   });
 
   // Intelligence tags (unique, alphabetical)
   eleventyConfig.addCollection("intelligenceTags", (collectionApi) => {
-    const items = collectionApi.getFilteredByGlob(intelligenceGlob);
+    const items = collectionApi
+      .getFilteredByGlob(intelligenceGlob)
+      .filter((item) => item.data && item.data.layout === "layouts/intelligence-post.njk");
     const tagSet = new Set();
 
     for (const item of items) {
@@ -64,7 +68,9 @@ module.exports = function (eleventyConfig) {
 
   // Intelligence by year (newest-first)
   eleventyConfig.addCollection("intelligenceYears", (collectionApi) => {
-    const items = collectionApi.getFilteredByGlob(intelligenceGlob);
+    const items = collectionApi
+      .getFilteredByGlob(intelligenceGlob)
+      .filter((item) => item.data && item.data.layout === "layouts/intelligence-post.njk");
     const byYear = new Map();
 
     for (const item of items) {
