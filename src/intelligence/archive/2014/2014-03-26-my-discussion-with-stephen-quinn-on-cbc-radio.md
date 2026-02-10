@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: California Department of Motor Vehicles to regulate self-driving vehicles by 2015
 date: 2014-03-26
 tags:

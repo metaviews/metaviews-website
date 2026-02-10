@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: BlackBerry Near the End
 date: 2013-02-09
 tags:
@@ -11,5 +12,6 @@ tags:
 - "Analysis"
 - "Video"
 ---
+https://www.youtube.com/watch?v=CllLWk0fcHgI returned to [The Agenda with Steve Paikin to discuss the pivot that BlackBerry hopes to make](http://ww3.tvo.org/video/188042/jesse-hirsh-blackberrys-odd-future) with the release of their new BB10 operating system.</p><p>We touched upon the new operating system, the Z10 device, and the challenges BlackBerry faces moving forward.</p><p>I enjoy going on The Agenda and talking with Steve as there are no commercials and the long conversational format allows for a smarter and deeper discussion.</p><p>For example we were able to get into the mythology that technology companies tend to foster and the impact this has upon their success.</p><p>This episode was shot during a massive snow storm in Toronto (and most of the North East of the continent), and the subway shut down three times while I was going to and from the studio.</p><p>The Agenda has another panel set for the show but had to cancel it because the participants couldn’t make it due to the snow.</p><p>Goes to show that often just showing up is enough to get in on the action, although it doesn’t help if you say smart stuff too(Source: <https://www.youtube.com/>)
 
-https://www.youtube.com/watch?v=CllLWk0fcHgI returned to [The Agenda with Steve Paikin to discuss the pivot that BlackBerry hopes to make](http://ww3.tvo.org/video/188042/jesse-hirsh-blackberrys-odd-future) with the release of their new BB10 operating system. We touched upon the new operating system, the Z10 device, and the challenges BlackBerry faces moving forward.I enjoy going on The Agenda and talking with Steve as there are no commercials and the long conversational format allows for a smarter and deeper discussion. For example we were able to get into the mythology that technology companies tend to foster and the impact this has upon their success.This episode was shot during a massive snow storm in Toronto (and most of the North East of the continent), and the subway shut down three times while I was going to and from the studio. The Agenda has another panel set for the show but had to cancel it because the participants couldn’t make it due to the snow. Goes to show that often just showing up is enough to get in on the action, although it doesn’t help if you say smart stuff too(Source: <https://www.youtube.com/>)
+

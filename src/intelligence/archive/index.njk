@@ -17,14 +17,12 @@ description: Browse intelligence by year.
 
 <h2>Years</h2>
 
+{% if collections.intelligenceYears and collections.intelligenceYears.length %}
 <ul>
-  <li><a href="/intelligence/archive/2025/">2025</a></li>
-  <li><a href="/intelligence/archive/2016/">2016</a></li>
-  <li><a href="/intelligence/archive/2015/">2015</a></li>
-  <li><a href="/intelligence/archive/2014/">2014</a></li>
-  <li><a href="/intelligence/archive/2013/">2013</a></li>
-  <li><a href="/intelligence/archive/2011/">2011</a></li>
-  <li><a href="/intelligence/archive/2010/">2010</a></li>
-  <li><a href="/intelligence/archive/2009/">2009</a></li>
-  <li><a href="/intelligence/archive/2008/">2008</a></li>
+  {% for yearBlock in collections.intelligenceYears %}
+  <li><a href="/intelligence/archive/{{ yearBlock.year }}/">{{ yearBlock.year }}</a></li>
+  {% endfor %}
 </ul>
+{% else %}
+<p>No archive years found.</p>
+{% endif %}

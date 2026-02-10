@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: NSA TURBINE
 date: 2014-03-18
 tags:

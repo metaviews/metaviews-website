@@ -8,6 +8,7 @@ description: "Browse intelligence by tag."
 <p><a href="/intelligence/">Back to Intelligence</a></p>
 <hr />
 
+{% set tagList = collections.intelligenceTags %}
 {% if tagList and tagList.length %}
 <ul>
   {% for tag in tagList %}

@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: Toronto Public Library System of 2042
 date: 2014-11-12
 tags:

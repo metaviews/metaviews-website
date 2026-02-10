@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: California Preparing for Self-Driving Cars by 2015
 date: 2014-03-23
 tags:

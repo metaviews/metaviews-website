@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: Facebook and AI
 date: 2014-12-18
 tags:

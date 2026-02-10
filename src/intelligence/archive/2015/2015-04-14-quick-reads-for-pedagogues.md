@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: Quick Reads for Pedagogues
 date: 2015-04-14
 tags:

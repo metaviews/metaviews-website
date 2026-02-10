@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.intelligenceYears
+  size: 1
+  alias: yearBlock
+permalink: "/intelligence/archive/{{ yearBlock.year }}/"
+eleventyComputed:
+  title: "Intelligence Archive {{ yearBlock.year }}"
+  description: "Intelligence from {{ yearBlock.year }}."
+---
+
+<h1>Intelligence Archive {{ yearBlock.year }}</h1>
+
+<p><a href="/intelligence/archive/">Back to archive</a></p>
+
+<ul>
+  {% for item in yearBlock.items %}
+  <li>
+    <a href="{{ item.url }}">{{ item.data.title or item.fileSlug }}</a>
+    {% if item.date %}<small> — {{ item.date | postDate }}</small>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: Prediction of crime using twitter data
 date: 2014-04-11
 tags:

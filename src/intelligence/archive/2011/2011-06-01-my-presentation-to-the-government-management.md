@@ -1,4 +1,5 @@
 ---
+layout: layouts/intelligence-post.njk
 title: Open Government and Open Data
 date: 2011-06-01
 tags:
