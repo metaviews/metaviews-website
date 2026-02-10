@@ -44,26 +44,29 @@ module.exports = function (eleventyConfig) {
     return items.sort((a, b) => effectiveDate(b) - effectiveDate(a));
   });
 
-  // Intelligence tags (unique, alphabetical)
+  // Intelligence tags (unique, alphabetical, min 2 posts)
   eleventyConfig.addCollection("intelligenceTags", (collectionApi) => {
     const items = collectionApi
       .getFilteredByGlob(intelligenceGlob)
       .filter((item) => item.data && item.data.layout === "layouts/intelligence-post.njk");
     const tagSet = new Set();
+    const tagCounts = new Map();
 
     for (const item of items) {
       const tags = item.data && item.data.tags ? item.data.tags : [];
       const tagList = Array.isArray(tags) ? tags : [tags];
       for (const tag of tagList) {
         if (typeof tag === "string" && tag.trim()) {
-          tagSet.add(tag.trim());
+          const clean = tag.trim();
+          tagSet.add(clean);
+          tagCounts.set(clean, (tagCounts.get(clean) || 0) + 1);
         }
       }
     }
 
-    return Array.from(tagSet).sort((a, b) =>
-      a.localeCompare(b, "en", { sensitivity: "base" })
-    );
+    return Array.from(tagSet)
+      .filter((tag) => (tagCounts.get(tag) || 0) >= 2)
+      .sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
   });
 
   // Intelligence by year (newest-first)

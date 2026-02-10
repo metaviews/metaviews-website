@@ -1,13 +1,9 @@
 ---
 layout: layouts/base.njk
 pagination:
-  data: collections
+  data: collections.intelligenceTags
   size: 1
   alias: tag
-  filter:
-    - all
-    - nav
-    - post
 permalink: "/intelligence/tags/{{ tag | slug }}/"
 eleventyComputed:
   title: "Tag: {{ tag }}"
