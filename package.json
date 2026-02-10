@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "build": "npx @11ty/eleventy",
+    "import:medium": "node scripts/import-medium.js"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
